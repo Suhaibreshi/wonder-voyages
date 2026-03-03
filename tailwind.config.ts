@@ -51,22 +51,20 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
+        forest: {
+          DEFAULT: "hsl(var(--forest))",
+          dark: "hsl(var(--forest-dark))",
+          light: "hsl(var(--forest-light))",
         },
-        emerald: {
-          deep: "hsl(var(--emerald-deep))",
-          dark: "hsl(var(--emerald-dark))",
+        orange: {
+          DEFAULT: "hsl(var(--orange))",
+          light: "hsl(var(--orange-light))",
         },
-        ivory: {
-          DEFAULT: "hsl(var(--ivory))",
-          warm: "hsl(var(--ivory-warm))",
+        beige: {
+          DEFAULT: "hsl(var(--beige))",
+          warm: "hsl(var(--beige-warm))",
         },
-        navy: {
-          DEFAULT: "hsl(var(--navy))",
-          light: "hsl(var(--navy-light))",
-        },
+        cream: "hsl(var(--cream))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -82,6 +80,8 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "2xl": "1rem",
+        "3xl": "1.25rem",
       },
       keyframes: {
         "accordion-down": {

@@ -1,146 +1,101 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import imgSrinagar from "@/assets/kashmir-srinagar.jpg";
+import imgPahalgam from "@/assets/kashmir-pahalgam.jpg";
+import imgGulmarg from "@/assets/kashmir-gulmarg.jpg";
+import imgSonamarg from "@/assets/kashmir-sonamarg.jpg";
+import imgSunset from "@/assets/kashmir-sunset.jpg";
+import imgTulips from "@/assets/kashmir-tulips.jpg";
+import imgLadakh from "@/assets/ladakh.jpg";
+import imgLeh from "@/assets/leh.jpg";
+import imgKargil from "@/assets/kargil.jpg";
 
-import destItaly from "@/assets/dest-italy.jpg";
-import destKyoto from "@/assets/dest-kyoto.jpg";
-import destMaldives from "@/assets/dest-maldives.jpg";
-import destTanzania from "@/assets/dest-tanzania.jpg";
-import destFrance from "@/assets/dest-france.jpg";
-import destSwiss from "@/assets/dest-swiss.jpg";
-import destDubai from "@/assets/dest-dubai.jpg";
-import destPeru from "@/assets/dest-peru.jpg";
+const tabs = ["Kashmir", "Jammu", "Ladakh", "Leh"];
 
-const destinations = [
-  {
-    name: "Italian Riviera Escape",
-    flag: "🇮🇹",
-    image: destItaly,
-    description: "Sun-kissed coastlines where la dolce vita meets timeless elegance.",
-    price: "From $4,900",
-    duration: "8 Days",
-  },
-  {
-    name: "Kyoto Cultural Immersion",
-    flag: "🇯🇵",
-    image: destKyoto,
-    description: "Ancient temples, whispered gardens, and the soul of Japan.",
-    price: "From $5,200",
-    duration: "10 Days",
-  },
-  {
-    name: "Maldives Private Island",
-    flag: "🇲🇻",
-    image: destMaldives,
-    description: "Your own slice of paradise, floating above crystalline waters.",
-    price: "From $7,800",
-    duration: "7 Days",
-  },
-  {
-    name: "Tanzania Safari",
-    flag: "🇹🇿",
-    image: destTanzania,
-    description: "Where the wild roams free beneath golden African skies.",
-    price: "From $6,500",
-    duration: "9 Days",
-  },
-  {
-    name: "South of France Yacht",
-    flag: "🇫🇷",
-    image: destFrance,
-    description: "Sapphire seas and champagne sunsets along the Côte d'Azur.",
-    price: "From $8,900",
-    duration: "7 Days",
-  },
-  {
-    name: "Swiss Alps Chalet",
-    flag: "🇨🇭",
-    image: destSwiss,
-    description: "Mountain grandeur wrapped in fireside warmth and silence.",
-    price: "From $5,600",
-    duration: "8 Days",
-  },
-  {
-    name: "Dubai Desert Experience",
-    flag: "🇦🇪",
-    image: destDubai,
-    description: "Golden dunes, starlit camps, and platinum luxury.",
-    price: "From $4,900",
-    duration: "7 Days",
-  },
-  {
-    name: "Machu Picchu Expedition",
-    flag: "🇵🇪",
-    image: destPeru,
-    description: "Walk with the ancients above the clouds of Peru.",
-    price: "From $5,400",
-    duration: "12 Days",
-  },
+const kashmirPackages = [
+  { title: "Honeymoon To Paradise Kashmir", duration: "5N, 6D", location: "Kashmir", image: imgSrinagar },
+  { title: "Budget Houseboats", duration: "3N, 4D", location: "Kashmir", image: imgSunset },
+  { title: "Scenic Kashmir", duration: "6N, 7D", location: "Kashmir", image: imgPahalgam },
+  { title: "Exotic Kashmir", duration: "5N, 6D", location: "Kashmir", image: imgGulmarg },
+  { title: "Kashmir Odyssey", duration: "7N, 8D", location: "Kashmir", image: imgSonamarg },
+  { title: "Delightful Kashmir", duration: "4N, 5D", location: "Kashmir", image: imgTulips },
+  { title: "The Green Paradise", duration: "5N, 6D", location: "Kashmir", image: imgPahalgam },
+  { title: "Paradise Kashmir", duration: "6N, 7D", location: "Kashmir", image: imgSrinagar },
+  { title: "Magical Kashmir", duration: "4N, 5D", location: "Kashmir", image: imgGulmarg },
+];
+
+const otherPackages = [
+  { title: "Ladakh Explorer", duration: "7N, 8D", location: "Ladakh", image: imgLadakh },
+  { title: "Leh Monastery Tour", duration: "5N, 6D", location: "Leh", image: imgLeh },
+  { title: "Kargil Adventure", duration: "6N, 7D", location: "Kargil", image: imgKargil },
 ];
 
 const DestinationsSection = () => {
-  return (
-    <section id="destinations" className="py-24 md:py-32 bg-background">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <p className="text-gold font-sans text-sm tracking-[0.3em] uppercase mb-4">
-            Signature Collection
-          </p>
-          <h2 className="text-4xl md:text-5xl font-serif text-foreground mb-4">
-            Extraordinary Destinations
-          </h2>
-          <p className="text-muted-foreground font-sans max-w-xl mx-auto">
-            Each journey is a masterpiece — meticulously curated, deeply personal, and utterly unforgettable.
-          </p>
-        </motion.div>
+  const [activeTab, setActiveTab] = useState("Kashmir");
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {destinations.map((dest, i) => (
+  const packages = activeTab === "Kashmir" ? kashmirPackages : otherPackages;
+
+  return (
+    <section id="destinations" className="section-padding bg-beige-warm">
+      <div className="container mx-auto">
+        <div className="text-center mb-10">
+          <p className="section-title">Step Into Paradise with Tour De WONDER</p>
+          <h2 className="section-heading">Discover Kashmir with Tour De WONDER</h2>
+        </div>
+
+        <div className="flex justify-center gap-3 mb-10 flex-wrap">
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-6 py-2.5 rounded-xl font-sans text-sm font-medium transition-all duration-300 ${
+                activeTab === tab
+                  ? "bg-primary text-primary-foreground shadow-md"
+                  : "bg-card text-foreground hover:bg-primary/10"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {packages.map((pkg, i) => (
             <motion.div
-              key={dest.name}
-              initial={{ opacity: 0, y: 40 }}
+              key={pkg.title + i}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group cursor-pointer"
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="package-card"
             >
-              <div className="relative overflow-hidden rounded-lg luxury-shadow">
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img
-                    src={dest.image}
-                    alt={dest.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                </div>
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-emerald-deep/90 via-emerald-deep/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
-                  <p className="text-gold/80 font-sans text-xs tracking-widest uppercase mb-1">
-                    {dest.flag} {dest.duration}
-                  </p>
-                  <h3 className="text-ivory font-serif text-xl mb-2">
-                    {dest.name}
-                  </h3>
-                  <p className="text-ivory/60 font-sans text-sm mb-3 leading-relaxed">
-                    {dest.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-gold font-serif text-lg font-semibold">
-                      {dest.price}
-                    </span>
-                    <span className="text-ivory/40 group-hover:text-gold transition-colors duration-300 flex items-center gap-1 text-xs font-sans tracking-wider uppercase">
-                      View <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </div>
+              <div className="relative overflow-hidden">
+                <img
+                  src={pkg.image}
+                  alt={pkg.title}
+                  className="w-full h-52 object-cover hover:scale-105 transition-transform duration-500"
+                />
+                <span className="absolute top-3 left-3 bg-accent text-accent-foreground text-xs font-sans font-semibold px-3 py-1 rounded-lg">
+                  {pkg.duration}
+                </span>
+                <span className="absolute top-3 right-3 bg-card/90 text-foreground text-xs font-sans px-3 py-1 rounded-lg">
+                  {pkg.location}
+                </span>
+              </div>
+              <div className="p-5">
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-4">{pkg.title}</h3>
+                <a href="#" className="btn-primary text-xs w-full block text-center">
+                  Book A Trip
+                </a>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <a href="#" className="btn-outline-primary inline-block">
+            View All Packages
+          </a>
         </div>
       </div>
     </section>
