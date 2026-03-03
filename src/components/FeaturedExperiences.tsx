@@ -59,7 +59,7 @@ const FeaturedExperiences = () => {
                 <img src={item.image} alt={item.title} className="w-full h-52 object-cover hover:scale-105 transition-transform duration-500" />
                 {"duration" in item && (
                   <span className="absolute top-3 left-3 bg-accent text-accent-foreground text-xs font-semibold px-3 py-1 rounded-lg">
-                    {item.duration}
+                    {(item as typeof tourPackages[number]).duration}
                   </span>
                 )}
                 <span className="absolute top-3 right-3 bg-card/90 text-foreground text-xs px-3 py-1 rounded-lg">
