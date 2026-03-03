@@ -26,8 +26,8 @@ const Footer = () => {
           <div>
             <h4 className="font-sans font-semibold text-sm uppercase tracking-wider mb-4">More Inquiry</h4>
             <ul className="space-y-3 font-sans text-sm text-primary-foreground/70">
-              <li className="flex items-center gap-2"><Phone size={14} className="text-accent" /> +91-8899511192</li>
-              <li className="flex items-center gap-2"><Mail size={14} className="text-accent" /> info@tourdewonder.in</li>
+              <li className="flex items-center gap-2"><Phone size={14} className="text-accent" /> +91 6006 288256</li>
+              <li className="flex items-center gap-2"><Mail size={14} className="text-accent" /> tourdewonder89@gmail.com</li>
               <li className="flex items-start gap-2"><MapPin size={14} className="text-accent mt-0.5" /> Srinagar, Jammu & Kashmir</li>
             </ul>
           </div>

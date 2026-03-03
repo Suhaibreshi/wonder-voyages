@@ -51,8 +51,8 @@ const Navbar = () => {
 
         <div className="hidden lg:flex items-center gap-2">
           <Phone size={16} className="text-accent" />
-          <a href="tel:+918899511192" className="text-sm font-sans font-semibold text-accent">
-            +91-8899511192
+          <a href="tel:+916006288256" className="text-sm font-sans font-semibold text-accent">
+            +91 6006 288256
           </a>
         </div>
 
@@ -83,8 +83,8 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <a href="tel:+918899511192" className="flex items-center gap-2 text-accent font-semibold text-sm">
-                <Phone size={16} /> +91-8899511192
+              <a href="tel:+916006288256" className="flex items-center gap-2 text-accent font-semibold text-sm">
+                <Phone size={16} /> +91 6006 288256
               </a>
             </nav>
           </motion.div>
