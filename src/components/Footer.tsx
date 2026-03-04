@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -8,18 +9,18 @@ const Footer = () => {
           <div>
             <h3 className="font-serif text-xl font-bold mb-4">Tour De <span className="text-accent">WONDER</span></h3>
             <p className="text-primary-foreground/70 font-sans text-sm mb-5">Get a Customized Tour</p>
-            <a href="#" className="bg-accent text-accent-foreground px-6 py-2.5 rounded-xl font-sans text-sm font-semibold inline-block hover:opacity-90 transition-opacity">
+            <Link to="/booking" className="bg-accent text-accent-foreground px-6 py-2.5 rounded-xl font-sans text-sm font-semibold inline-block hover:opacity-90 transition-opacity">
               Book A Tour
-            </a>
+            </Link>
           </div>
 
           <div>
             <h4 className="font-sans font-semibold text-sm uppercase tracking-wider mb-4">Quick Links</h4>
             <ul className="space-y-2.5 font-sans text-sm text-primary-foreground/70">
-              <li><a href="#" className="hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Custom Booking</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Contact Us</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Refund Policies</a></li>
+              <li><a href="#about" className="hover:text-accent transition-colors">About Us</a></li>
+              <li><Link to="/booking" className="hover:text-accent transition-colors">Custom Booking</Link></li>
+              <li><a href="#testimonials" className="hover:text-accent transition-colors">Contact Us</a></li>
+              <li><Link to="/refund-policies" className="hover:text-accent transition-colors">Refund Policies</Link></li>
             </ul>
           </div>
 

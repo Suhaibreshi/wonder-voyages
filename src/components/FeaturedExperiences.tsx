@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import img1 from "@/assets/kashmir-srinagar.jpg";
@@ -11,9 +12,9 @@ const tourPackages = [
 ];
 
 const hotels = [
-  { title: "Hotel Royal Hillton", location: "Srinagar", image: img1 },
-  { title: "Hotel Asian Park", location: "Pahalgam", image: img2 },
-  { title: "The Khyber Resort", location: "Gulmarg", image: img3 },
+  { title: "Hotel Royal Hillton", location: "Srinagar", image: "/hotels/Hotel Royal Hillton.png" },
+  { title: "Hotel Asian Park", location: "Pahalgam", image: "/hotels/front-facade.jpg" },
+  { title: "The Khyber Resort", location: "Gulmarg", image: "/hotels/The Khyber Himalayan Resort.jpg" },
 ];
 
 const FeaturedExperiences = () => {
@@ -68,9 +69,9 @@ const FeaturedExperiences = () => {
               </div>
               <div className="p-5">
                 <h3 className="font-serif text-lg font-semibold mb-4">{item.title}</h3>
-                <a href="#" className="btn-primary text-xs w-full block text-center">
+                <Link to="/booking" className="btn-primary text-xs w-full block text-center">
                   {"duration" in item ? "Book A Trip" : "Book Now"}
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}

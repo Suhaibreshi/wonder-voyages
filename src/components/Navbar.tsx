@@ -4,6 +4,7 @@ import { Menu, X, Phone } from "lucide-react";
 
 const navLinks = [
   { label: "Destinations", href: "#destinations" },
+  { label: "Hotels", href: "#hotels" },
   { label: "Tour & Treks", href: "#treks" },
   { label: "Help", href: "#facility" },
   { label: "More Inquiry", href: "#testimonials" },

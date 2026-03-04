@@ -1,23 +1,18 @@
 import { motion } from "framer-motion";
-import img1 from "@/assets/kashmir-srinagar.jpg";
-import img2 from "@/assets/kashmir-pahalgam.jpg";
-import img3 from "@/assets/kashmir-gulmarg.jpg";
-import img4 from "@/assets/kashmir-sonamarg.jpg";
-import img5 from "@/assets/kashmir-sunset.jpg";
-import img6 from "@/assets/kashmir-tulips.jpg";
+import { Link } from "react-router-dom";
 
 const hotels = [
-  { name: "Hotel Royal Hillton", image: img1 },
-  { name: "Hotel Asian Park", image: img2 },
-  { name: "Hotel Pine and Peak", image: img3 },
-  { name: "The Khyber Himalayan Resort", image: img4 },
-  { name: "Hotel Fortune Resort", image: img5 },
-  { name: "Hotel Glacier Heights", image: img6 },
+  { name: "Hotel Royal Hillton", image: "/hotels/Hotel Royal Hillton.png" },
+  { name: "Hotel Pine and Peak", image: "/hotels/Hotel Pine and Peak.png" },
+  { name: "The Khyber Himalayan Resort", image: "/hotels/The Khyber Himalayan Resort.jpg" },
+  { name: "Hotel Fortune Resort", image: "/hotels/Hotel Fortune Resort.jpg" },
+  { name: "Hotel Glacier Heights", image: "/hotels/Hotel Glacier Heights.jpg" },
+  { name: "Hotel Asian Park", image: "/hotels/front-facade.jpg" },
 ];
 
 const TopHotelsSection = () => {
   return (
-    <section className="section-padding bg-background">
+    <section id="hotels" className="section-padding bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <h2 className="section-heading">Kashmir's Top Hotels</h2>
@@ -36,7 +31,7 @@ const TopHotelsSection = () => {
               <img src={hotel.image} alt={hotel.name} className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500" />
               <div className="p-5">
                 <h3 className="font-serif text-lg font-semibold mb-3">{hotel.name}</h3>
-                <a href="#" className="btn-primary text-xs w-full block text-center">Book Now</a>
+                <Link to="/booking" className="btn-primary text-xs w-full block text-center">Book Now</Link>
               </div>
             </motion.div>
           ))}

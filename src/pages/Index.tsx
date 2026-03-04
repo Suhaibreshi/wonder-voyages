@@ -8,6 +8,7 @@ import TopHotelsSection from "@/components/TopHotelsSection";
 import FacilitySection from "@/components/FacilitySection";
 import BookARideSection from "@/components/BookARideSection";
 import HouseboatsSection from "@/components/HouseboatsSection";
+import NaturalSpringsLakesSection from "@/components/NaturalSpringsLakesSection";
 import TreksSection from "@/components/TreksSection";
 import AffordableBundlesSection from "@/components/AffordableBundlesSection";
 import DealsSection from "@/components/DealsSection";
@@ -28,6 +29,7 @@ const Index = () => {
       <FacilitySection />
       <BookARideSection />
       <HouseboatsSection />
+      <NaturalSpringsLakesSection />
       <TreksSection />
       <AffordableBundlesSection />
       <DealsSection />
