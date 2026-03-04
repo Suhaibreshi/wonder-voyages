@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   Phone, 
@@ -12,7 +12,9 @@ import {
   CheckCircle,
   Clock,
   ArrowLeft,
-  ChevronDown
+  ChevronDown,
+  Car,
+  Building2
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -31,6 +33,29 @@ const tourServices = [
   "Great Lakes Trek",
   "Kargil War Memorial",
   "Custom Tour Package"
+];
+
+// Ride services options
+const rideServices = [
+  "Airport Pickup/Drop",
+  "Srinagar City Transfer",
+  "Gulmarg Transfer",
+  "Pahalgam Transfer",
+  "Sonamarg Transfer",
+  "Leh Airport Transfer",
+  "Custom Route"
+];
+
+// Hotel services options
+const hotelServices = [
+  "Srinagar Hotels",
+  "Gulmarg Hotels",
+  "Pahalgam Hotels",
+  "Sonamarg Hotels",
+  "Leh Hotels",
+  "Houseboat Stay",
+  "Luxury Resorts",
+  "Budget Hotels"
 ];
 
 // Form data types
@@ -52,6 +77,9 @@ interface QuickBookingForm {
 
 const Booking = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const lakeData = location.state as { name: string; location: string; altitude: string; waterSource: string; description: string; bestTimeToVisit: string; trekkingRoute: string; category: string; image: string } | undefined;
+  const [serviceType, setServiceType] = useState<"tour" | "ride" | "hotel">("tour");
   const [bookingType, setBookingType] = useState<"full" | "quick">("full");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -114,7 +142,10 @@ const Booking = () => {
 
   // Generate WhatsApp message for full form
   const generateFullFormMessage = () => {
+    const serviceLabel = serviceType === "tour" ? "Tour" : serviceType === "ride" ? "Ride" : "Hotel";
     const message = `*New Booking Request - Tour De WONDER*
+
+*Booking Type:* ${serviceLabel}
 
 *Personal Details:*
 • Name: ${fullForm.firstName}
@@ -124,7 +155,7 @@ const Booking = () => {
 *Trip Details:*
 • Arrival Date: ${fullForm.arrivalDate || "Not specified"}
 • Number of Persons: ${fullForm.persons}
-• Tour Service: ${fullForm.tourService || "Not specified"}
+• Service: ${fullForm.tourService || "Not specified"}
 
 *Additional Message:*
 ${fullForm.message || "No additional message"}
@@ -135,7 +166,10 @@ _This is an automated booking request from the Tour De WONDER website._`;
 
   // Generate WhatsApp message for quick form
   const generateQuickFormMessage = () => {
+    const serviceLabel = serviceType === "tour" ? "Tour" : serviceType === "ride" ? "Ride" : "Hotel";
     const message = `*Quick Call Back Request - Tour De WONDER*
+
+*Booking Type:* ${serviceLabel}
 
 *Name:* ${quickForm.name}
 *Phone:* ${quickForm.phone}
@@ -286,7 +320,7 @@ _This is an automated request from the Tour De WONDER website._`;
             animate={{ opacity: 1, y: 0 }}
             className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4"
           >
-            Book Your Dream Tour
+            {serviceType === "tour" ? "Book Your Dream Tour" : serviceType === "ride" ? "Book Your Ride" : "Book Your Hotel"}
           </motion.h1>
           
           <motion.p
@@ -295,9 +329,121 @@ _This is an automated request from the Tour De WONDER website._`;
             transition={{ delay: 0.1 }}
             className="text-lg text-muted-foreground max-w-2xl"
           >
-            Choose your preferred booking method and let us help you create 
-            unforgettable memories in Kashmir.
+            {serviceType === "tour" 
+              ? "Choose your preferred booking method and let us help you create unforgettable memories in Kashmir."
+              : serviceType === "ride"
+              ? "Book your comfortable ride for airport transfers, city tours, and more across Kashmir."
+              : "Find the perfect accommodation for your stay in Kashmir - from luxury hotels to cozy houseboats."}
           </motion.p>
+        </div>
+      </div>
+
+      {/* Lake Details Section */}
+      {lakeData && (
+        <div className="bg-muted/30 py-8">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-background rounded-2xl overflow-hidden shadow-lg"
+            >
+              <div className="grid md:grid-cols-2 gap-0">
+                <div className="relative h-64 md:h-auto">
+                  <img
+                    src={lakeData.image}
+                    alt={lakeData.name}
+                    className="w-full h-full object-cover"
+                  />
+                  <span className="absolute top-4 left-4 bg-primary text-primary-foreground text-sm font-semibold px-3 py-1 rounded-lg">
+                    {lakeData.category}
+                  </span>
+                </div>
+                <div className="p-6 md:p-8">
+                  <h2 className="text-2xl font-serif font-bold mb-4">{lakeData.name}</h2>
+                  
+                  <div className="grid grid-cols-2 gap-4 mb-6">
+                    <div className="flex items-start gap-2">
+                      <MapPin className="h-5 w-5 text-primary mt-0.5" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Location</p>
+                        <p className="font-semibold text-sm">{lakeData.location}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Building2 className="h-5 w-5 text-primary mt-0.5" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Altitude</p>
+                        <p className="font-semibold text-sm">{lakeData.altitude}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-green-600 mt-0.5" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Water Source</p>
+                        <p className="font-semibold text-sm">{lakeData.waterSource}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Calendar className="h-5 w-5 text-orange-500 mt-0.5" />
+                      <div>
+                        <p className="text-sm text-muted-foreground">Best Time</p>
+                        <p className="font-semibold text-sm">{lakeData.bestTimeToVisit}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <p className="text-sm text-muted-foreground mb-2">Description</p>
+                    <p className="text-foreground">{lakeData.description}</p>
+                  </div>
+
+                  <div className="bg-muted p-4 rounded-lg">
+                    <p className="text-sm text-muted-foreground mb-1">Trekking Route</p>
+                    <p className="font-semibold">{lakeData.trekkingRoute}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      )}
+
+      {/* Service Type Selection: Tour, Ride, or Hotel */}
+      <div className="container mx-auto px-6 py-8">
+        <div className="flex justify-center gap-3 mb-8">
+          <button
+            onClick={() => setServiceType("tour")}
+            className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
+              serviceType === "tour"
+                ? "bg-primary text-primary-foreground shadow-lg"
+                : "bg-card text-foreground hover:bg-primary/10 border border-border"
+            }`}
+          >
+            <Calendar className="w-4 h-4" />
+            Book a Tour
+          </button>
+          <button
+            onClick={() => setServiceType("ride")}
+            className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
+              serviceType === "ride"
+                ? "bg-primary text-primary-foreground shadow-lg"
+                : "bg-card text-foreground hover:bg-primary/10 border border-border"
+            }`}
+          >
+            <Car className="w-4 h-4" />
+            Book a Ride
+          </button>
+          <button
+            onClick={() => setServiceType("hotel")}
+            className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
+              serviceType === "hotel"
+                ? "bg-primary text-primary-foreground shadow-lg"
+                : "bg-card text-foreground hover:bg-primary/10 border border-border"
+            }`}
+          >
+            <Building2 className="w-4 h-4" />
+            Book a Hotel
+          </button>
         </div>
       </div>
 
@@ -469,7 +615,7 @@ _This is an automated request from the Tour De WONDER website._`;
                   {/* Tour Service */}
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-foreground">
-                      Tour Service
+                      {serviceType === "tour" ? "Tour Service" : serviceType === "ride" ? "Ride Service" : "Hotel Service"}
                     </label>
                     <div className="relative">
                       <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -478,8 +624,10 @@ _This is an automated request from the Tour De WONDER website._`;
                         onChange={(e) => setFullForm({ ...fullForm, tourService: e.target.value })}
                         className="w-full pl-12 pr-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all appearance-none"
                       >
-                        <option value="">Select a tour service</option>
-                        {tourServices.map((service) => (
+                        <option value="">
+                          {serviceType === "tour" ? "Select a tour service" : serviceType === "ride" ? "Select a ride service" : "Select a hotel service"}
+                        </option>
+                        {(serviceType === "tour" ? tourServices : serviceType === "ride" ? rideServices : hotelServices).map((service) => (
                           <option key={service} value={service}>{service}</option>
                         ))}
                       </select>

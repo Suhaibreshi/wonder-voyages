@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import imgGulmarg from "@/assets/kashmir-gulmarg.jpg";
 import imgHouseboat from "@/assets/houseboat-kashmir.jpg";
 import imgSonamarg from "@/assets/kashmir-sonamarg.jpg";
@@ -39,9 +40,9 @@ const DealsSection = () => {
               </div>
               <div className="absolute bottom-4 left-4 right-4">
                 <h3 className="font-serif text-xl font-bold text-primary-foreground mb-3">{deal.title}</h3>
-                <a href="#" className="bg-primary text-primary-foreground px-5 py-2 rounded-xl font-sans text-xs font-semibold inline-block hover:opacity-90 transition-opacity">
+                <Link to="/booking" className="bg-primary text-primary-foreground px-5 py-2 rounded-xl font-sans text-xs font-semibold inline-block hover:opacity-90 transition-opacity">
                   Book Now
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import img1 from "@/assets/kashmir-srinagar.jpg";
 import img2 from "@/assets/kashmir-pahalgam.jpg";
 import img3 from "@/assets/kashmir-tulips.jpg";
@@ -20,9 +21,9 @@ const AboutSection = () => {
             <p className="text-muted-foreground font-sans leading-relaxed mb-6">
               Tour De WONDER invites you to experience Kashmir in a way that feels truly special. As a trusted travel agency, we design memorable journeys that combine scenic tours, peaceful houseboat stays on Dal Lake, adventurous Himalayan treks, and immersive visits to local markets. Whether you're looking for a romantic getaway, a family vacation, or a solo adventure, we craft every detail with care so you can enjoy the magic of Kashmir without any hassle.
             </p>
-            <a href="#destinations" className="btn-primary inline-block">
+            <Link to="/booking" className="btn-primary inline-block">
               Book Now
-            </a>
+            </Link>
 
             <div className="mt-8 flex items-center gap-3">
               <span className="text-4xl font-serif font-bold text-primary">19+</span>
