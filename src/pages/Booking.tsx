@@ -109,6 +109,42 @@ const Booking = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // WhatsApp number
+  const WHATSAPP_NUMBER = "916006288256";
+
+  // Generate WhatsApp message for full form
+  const generateFullFormMessage = () => {
+    const message = `*New Booking Request - Tour De WONDER*
+
+*Personal Details:*
+• Name: ${fullForm.firstName}
+• Phone: ${fullForm.phone}
+• Email: ${fullForm.email}
+
+*Trip Details:*
+• Arrival Date: ${fullForm.arrivalDate || "Not specified"}
+• Number of Persons: ${fullForm.persons}
+• Tour Service: ${fullForm.tourService || "Not specified"}
+
+*Additional Message:*
+${fullForm.message || "No additional message"}
+
+_This is an automated booking request from the Tour De WONDER website._`;
+    return encodeURIComponent(message);
+  };
+
+  // Generate WhatsApp message for quick form
+  const generateQuickFormMessage = () => {
+    const message = `*Quick Call Back Request - Tour De WONDER*
+
+*Name:* ${quickForm.name}
+*Phone:* ${quickForm.phone}
+*Message:* ${quickForm.message || "No message"}
+
+_This is an automated request from the Tour De WONDER website._`;
+    return encodeURIComponent(message);
+  };
+
   // Submit full form
   const handleFullSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -116,10 +152,7 @@ const Booking = () => {
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Store in localStorage (simulating database)
+    // Store in localStorage
     const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
     bookings.push({
       type: "full",
@@ -128,8 +161,9 @@ const Booking = () => {
     });
     localStorage.setItem("bookings", JSON.stringify(bookings));
 
-    // Simulate WhatsApp notification (in production, use actual API)
-    console.log("Booking submitted:", fullForm);
+    // Redirect to WhatsApp with form details
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${generateFullFormMessage()}`;
+    window.open(whatsappUrl, "_blank");
     
     setIsSubmitting(false);
     setIsSuccess(true);
@@ -142,10 +176,7 @@ const Booking = () => {
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Store in localStorage (simulating database)
+    // Store in localStorage
     const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
     bookings.push({
       type: "quick",
@@ -154,8 +185,9 @@ const Booking = () => {
     });
     localStorage.setItem("bookings", JSON.stringify(bookings));
 
-    // Simulate WhatsApp notification (in production, use actual API)
-    console.log("Quick booking submitted:", quickForm);
+    // Redirect to WhatsApp with form details
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${generateQuickFormMessage()}`;
+    window.open(whatsappUrl, "_blank");
     
     setIsSubmitting(false);
     setIsSuccess(true);
