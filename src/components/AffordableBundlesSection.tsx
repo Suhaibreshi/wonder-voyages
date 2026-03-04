@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import img1 from "@/assets/kashmir-pahalgam.jpg";
 import img2 from "@/assets/kashmir-srinagar.jpg";
 import img3 from "@/assets/kashmir-gulmarg.jpg";
@@ -39,7 +40,7 @@ const AffordableBundlesSection = () => {
               </div>
               <div className="p-5">
                 <h3 className="font-serif text-lg font-semibold mb-4">{b.title}</h3>
-                <a href="#" className="btn-primary text-xs w-full block text-center">Book A Trip</a>
+                <Link to="/booking" className="btn-primary text-xs w-full block text-center">Book A Trip</Link>
               </div>
             </motion.div>
           ))}

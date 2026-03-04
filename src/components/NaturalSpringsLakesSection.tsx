@@ -1,11 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import imgKausarnag from "@/assets/kashmir-sonamarg.jpg";
-import imgGreatLakes from "@/assets/trek-great-lakes.jpg";
-import imgChauharnag from "@/assets/kashmir-pahalgam.jpg";
-import imgTulian from "@/assets/kashmir-pahalgam.jpg";
-import imgSheshnag from "@/assets/kashmir-pahalgam.jpg";
 import {
   Dialog,
   DialogContent,
@@ -25,7 +20,7 @@ const lakes = [
     bestTimeToVisit: "July – September",
     trekkingRoute: "Aharbal → Kausarnag trek",
     category: "Alpine Lake / Sacred Lake",
-    image: imgKausarnag 
+    image: "/Lakes/Kausarnag Lake.png" 
   },
   { 
     name: "Kashmir Great Lakes", 
@@ -36,18 +31,18 @@ const lakes = [
     bestTimeToVisit: "July – September",
     trekkingRoute: "Sonamarg → Nichnai → Gadsar → Gangbal",
     category: "Alpine Lakes System",
-    image: imgGreatLakes 
+    image: "/Lakes/Kashmir Great Lakes.png" 
   },
   { 
-    name: "Chauharnag Lakes", 
+    name: "Chauharnag Lake", 
     location: "Kulgam district, Kashmir", 
     altitude: "~3,800 meters",
     waterSource: "Glacier-fed",
     description: "A cluster of four alpine lakes located in the Pir Panjal mountains. The name 'Chauharnag' literally means 'Four Lakes' in Kashmiri. Known for pristine water and scenic trekking routes.",
     bestTimeToVisit: "July – September",
     trekkingRoute: "Aharbal → Chauharnag trek",
-    category: "Alpine Lakes",
-    image: imgChauharnag 
+    category: "Alpine Lake",
+    image: "/Lakes/Sheshnag Lake.jpg" 
   },
   { 
     name: "Tulian Lake", 
@@ -58,7 +53,7 @@ const lakes = [
     bestTimeToVisit: "June – September",
     trekkingRoute: "Pahalgam → Tulian Lake trek",
     category: "Alpine Lake",
-    image: imgTulian 
+    image: "/Lakes/Tulian Lake.png" 
   },
   { 
     name: "Sheshnag Lake", 
@@ -69,7 +64,7 @@ const lakes = [
     bestTimeToVisit: "June – September",
     trekkingRoute: "Pahalgam → Chandanwari → Sheshnag",
     category: "Sacred Alpine Lake",
-    image: imgSheshnag 
+    image: "/Lakes/Sheshnag Lake.jpg" 
   },
 ];
 
@@ -173,7 +168,7 @@ const NaturalSpringsLakesSection = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="#" className="btn-outline-primary inline-block">View All Lakes</a>
+          <Link to="/booking" className="btn-outline-primary inline-block">View All Lakes</Link>
         </div>
       </div>
     </section>

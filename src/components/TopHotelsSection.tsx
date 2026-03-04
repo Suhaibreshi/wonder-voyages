@@ -38,7 +38,7 @@ const TopHotelsSection = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="#" className="btn-outline-primary inline-block">View All Hotels</a>
+          <Link to="/booking" className="btn-outline-primary inline-block">View All Hotels</Link>
         </div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import imgSrinagar from "@/assets/kashmir-srinagar.jpg";
 import imgPahalgam from "@/assets/kashmir-pahalgam.jpg";
 import imgGulmarg from "@/assets/kashmir-gulmarg.jpg";
@@ -84,18 +85,18 @@ const DestinationsSection = () => {
               </div>
               <div className="p-5">
                 <h3 className="font-serif text-lg font-semibold text-foreground mb-4">{pkg.title}</h3>
-                <a href="#" className="btn-primary text-xs w-full block text-center">
+                <Link to="/booking" className="btn-primary text-xs w-full block text-center">
                   Book A Trip
-                </a>
+                </Link>
               </div>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center mt-10">
-          <a href="#" className="btn-outline-primary inline-block">
+          <Link to="/booking" className="btn-outline-primary inline-block">
             View All Packages
-          </a>
+          </Link>
         </div>
       </div>
     </section>

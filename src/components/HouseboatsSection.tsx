@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import img from "@/assets/houseboat-kashmir.jpg";
 
 const HouseboatsSection = () => {
@@ -17,7 +18,7 @@ const HouseboatsSection = () => {
             <p className="text-muted-foreground font-sans leading-relaxed mb-6">
               Experience the timeless charm of Kashmir's iconic houseboats, located on the serene Dal Lake and picturesque Nigeen Lake. These floating marvels offer a blend of traditional craftsmanship and modern comfort, providing an unforgettable stay on the water surrounded by majestic mountains.
             </p>
-            <a href="#" className="btn-primary inline-block">Houseboat Packages</a>
+            <Link to="/booking" className="btn-primary inline-block">Houseboat Packages</Link>
           </motion.div>
 
           <motion.div
