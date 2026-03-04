@@ -37,13 +37,9 @@ const tourServices = [
 
 // Ride services options
 const rideServices = [
-  "Airport Pickup/Drop",
-  "Srinagar City Transfer",
-  "Gulmarg Transfer",
-  "Pahalgam Transfer",
-  "Sonamarg Transfer",
-  "Leh Airport Transfer",
-  "Custom Route"
+  "Ertiga (7 Seater) - ₹3,500/day",
+  "Desire (5 Seater) - ₹2,500/day",
+  "Innova Crysta (7 Seater) - ₹5,000/day"
 ];
 
 // Hotel services options
@@ -80,6 +76,11 @@ const Booking = () => {
   const location = useLocation();
   const lakeData = location.state as { name: string; location: string; altitude: string; waterSource: string; description: string; bestTimeToVisit: string; trekkingRoute: string; category: string; image: string } | undefined;
   const [serviceType, setServiceType] = useState<"tour" | "ride" | "hotel">("tour");
+  const handleServiceTypeChange = (type: "tour" | "ride" | "hotel") => {
+    setServiceType(type);
+    // Reset the service selection when changing service type
+    setFullForm((prev) => ({ ...prev, tourService: "" }));
+  };
   const [bookingType, setBookingType] = useState<"full" | "quick">("full");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -412,7 +413,7 @@ _This is an automated request from the Tour De WONDER website._`;
       <div className="container mx-auto px-6 py-8">
         <div className="flex justify-center gap-3 mb-8">
           <button
-            onClick={() => setServiceType("tour")}
+            onClick={() => handleServiceTypeChange("tour")}
             className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
               serviceType === "tour"
                 ? "bg-primary text-primary-foreground shadow-lg"
@@ -423,7 +424,7 @@ _This is an automated request from the Tour De WONDER website._`;
             Book a Tour
           </button>
           <button
-            onClick={() => setServiceType("ride")}
+            onClick={() => handleServiceTypeChange("ride")}
             className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
               serviceType === "ride"
                 ? "bg-primary text-primary-foreground shadow-lg"
@@ -434,7 +435,7 @@ _This is an automated request from the Tour De WONDER website._`;
             Book a Ride
           </button>
           <button
-            onClick={() => setServiceType("hotel")}
+            onClick={() => handleServiceTypeChange("hotel")}
             className={`px-6 py-3 rounded-xl font-sans text-sm font-medium transition-all flex items-center gap-2 ${
               serviceType === "hotel"
                 ? "bg-primary text-primary-foreground shadow-lg"
