@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import imgTrek from "@/assets/trek-great-lakes.jpg";
 import imgPahalgam from "@/assets/kashmir-pahalgam.jpg";
 import imgSonamarg from "@/assets/kashmir-sonamarg.jpg";
@@ -39,14 +40,14 @@ const TreksSection = () => {
               </div>
               <div className="p-5">
                 <h3 className="font-serif text-base font-semibold mb-4">{trek.title}</h3>
-                <a href="#" className="btn-primary text-xs w-full block text-center">Book A Trip</a>
+                <Link to="/booking" className="btn-primary text-xs w-full block text-center">Book A Trip</Link>
               </div>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center mt-10">
-          <a href="#" className="btn-outline-primary inline-block">View All Treks »</a>
+          <Link to="/booking" className="btn-outline-primary inline-block">View All Treks »</Link>
         </div>
       </div>
     </section>

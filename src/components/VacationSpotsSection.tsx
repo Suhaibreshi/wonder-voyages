@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import imgKashmir from "@/assets/kashmir-pahalgam.jpg";
 import imgLadakh from "@/assets/ladakh.jpg";
 import imgKargil from "@/assets/kargil.jpg";
@@ -22,7 +23,7 @@ const VacationSpotsSection = () => {
               Explore handpicked destinations designed to offer comfort, beauty, and unforgettable experiences.
             </p>
           </div>
-          <a href="#" className="btn-outline-primary text-xs">View All Destination</a>
+          <Link to="/booking" className="btn-outline-primary text-xs">View All Destination</Link>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-5">

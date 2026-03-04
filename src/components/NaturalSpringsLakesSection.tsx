@@ -173,7 +173,7 @@ const NaturalSpringsLakesSection = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="#" className="btn-outline-primary inline-block">View All Lakes</a>
+          <Link to="/booking" className="btn-outline-primary inline-block">View All Lakes</Link>
         </div>
       </div>
     </section>

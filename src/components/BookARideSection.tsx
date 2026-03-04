@@ -39,7 +39,7 @@ const BookARideSection = () => {
         </div>
 
         <div className="text-center mt-10">
-          <a href="#" className="btn-outline-primary inline-block">View All Rides</a>
+          <Link to="/booking" className="btn-outline-primary inline-block">View All Rides</Link>
         </div>
       </div>
     </section>
