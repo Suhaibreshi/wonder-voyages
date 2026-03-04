@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-kashmir.jpg";
 
 const HeroSection = () => {
@@ -47,12 +48,12 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <a
-              href="#destinations"
+            <Link
+              to="/booking"
               className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-2xl font-sans text-sm font-semibold tracking-wide hover:opacity-90 transition-opacity"
             >
               Book Now
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

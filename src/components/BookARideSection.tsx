@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Car } from "lucide-react";
 
 const vehicles = [
@@ -33,7 +34,7 @@ const BookARideSection = () => {
                 <h3 className="font-serif text-xl font-semibold mb-1">{v.name}</h3>
                 <p className="text-muted-foreground font-sans text-sm mb-1">{v.seats}</p>
                 <p className="text-accent font-sans font-bold text-lg mb-4">{v.price}</p>
-                <a href="#" className="btn-primary text-xs">Book Now</a>
+                <Link to="/booking" className="btn-primary text-xs">Book Now</Link>
               </div>
             </motion.div>
           ))}
