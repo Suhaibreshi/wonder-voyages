@@ -12,9 +12,9 @@ const tourPackages = [
 ];
 
 const hotels = [
-  { title: "Hotel Royal Hillton", location: "Srinagar", image: img1 },
-  { title: "Hotel Asian Park", location: "Pahalgam", image: img2 },
-  { title: "The Khyber Resort", location: "Gulmarg", image: img3 },
+  { title: "Hotel Royal Hillton", location: "Srinagar", image: "/hotels/Hotel Royal Hillton.png" },
+  { title: "Hotel Asian Park", location: "Pahalgam", image: "/hotels/front-facade.jpg" },
+  { title: "The Khyber Resort", location: "Gulmarg", image: "/hotels/The Khyber Himalayan Resort.jpg" },
 ];
 
 const FeaturedExperiences = () => {

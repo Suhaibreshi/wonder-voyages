@@ -12,7 +12,7 @@ const hotels = [
 
 const TopHotelsSection = () => {
   return (
-    <section className="section-padding bg-background">
+    <section id="hotels" className="section-padding bg-background">
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <h2 className="section-heading">Kashmir's Top Hotels</h2>
